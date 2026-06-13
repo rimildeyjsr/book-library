@@ -1,0 +1,265 @@
+{
+  "0 debug pnpm:scope": {
+    "selected": 1
+  },
+  "1 error pnpm": {
+    "code": "ERR_PNPM_META_FETCH_FAIL",
+    "attempts": 1,
+    "err": {
+      "name": "Error",
+      "message": "GET https://registry.npmjs.org/pnpm: request to https://registry.npmjs.org/pnpm failed, reason: getaddrinfo ENOTFOUND registry.npmjs.org",
+      "code": "ERR_PNPM_META_FETCH_FAIL",
+      "stack": "Error: GET https://registry.npmjs.org/pnpm: request to https://registry.npmjs.org/pnpm failed, reason: getaddrinfo ENOTFOUND registry.npmjs.org\n    at RetryOperation._fn (/Users/rimildeyjsr/.node/corepack/pnpm/6.11.0/dist/pnpm.cjs:79596:18)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)"
+    }
+  },
+  "2 debug pnpm": "Using cached meta from /Users/rimildeyjsr/Library/Caches/pnpm/metadata/registry.npmjs.org/pnpm.json",
+  "3 debug pnpm:update-check": {
+    "currentVersion": "6.11.0",
+    "latestVersion": "11.3.0"
+  },
+  "4 debug pnpm:package-manifest": {
+    "initial": {
+      "name": "library-scanner-mobile",
+      "version": "0.1.0",
+      "private": true,
+      "main": "node_modules/expo/AppEntry.js",
+      "scripts": {
+        "start": "expo start",
+        "ios": "expo start --ios",
+        "android": "expo start --android",
+        "web": "expo start --web"
+      },
+      "dependencies": {
+        "expo": "~53.0.0",
+        "expo-status-bar": "~2.2.3",
+        "react": "19.0.0",
+        "react-native": "0.79.5"
+      },
+      "devDependencies": {
+        "@babel/core": "^7.25.2",
+        "@types/react": "~19.0.10",
+        "typescript": "~5.8.3"
+      }
+    },
+    "prefix": "/Users/rimildeyjsr/Documents/Codex/2026-06-06/i-want-to-build-a-book/mobile"
+  },
+  "5 debug pnpm:context": {
+    "currentLockfileExists": false,
+    "storeDir": "/Users/rimildeyjsr/Documents/Codex/.pnpm-store/v3",
+    "virtualStoreDir": "/Users/rimildeyjsr/Documents/Codex/2026-06-06/i-want-to-build-a-book/mobile/node_modules/.pnpm"
+  },
+  "6 debug pnpm:stage": {
+    "prefix": "/Users/rimildeyjsr/Documents/Codex/2026-06-06/i-want-to-build-a-book/mobile",
+    "stage": "resolution_started"
+  },
+  "7 debug pnpm:request-retry": {
+    "attempt": 1,
+    "error": {
+      "message": "request to https://registry.npmjs.org/@babel%2Fcore failed, reason: getaddrinfo ENOTFOUND registry.npmjs.org",
+      "type": "system",
+      "errno": "ENOTFOUND",
+      "code": "ENOTFOUND"
+    },
+    "maxRetries": 2,
+    "method": "GET",
+    "timeout": 10000,
+    "url": "https://registry.npmjs.org/@babel%2Fcore"
+  },
+  "8 debug pnpm:request-retry": {
+    "attempt": 1,
+    "error": {
+      "message": "request to https://registry.npmjs.org/@types%2Freact failed, reason: getaddrinfo ENOTFOUND registry.npmjs.org",
+      "type": "system",
+      "errno": "ENOTFOUND",
+      "code": "ENOTFOUND"
+    },
+    "maxRetries": 2,
+    "method": "GET",
+    "timeout": 10000,
+    "url": "https://registry.npmjs.org/@types%2Freact"
+  },
+  "9 debug pnpm:request-retry": {
+    "attempt": 1,
+    "error": {
+      "message": "request to https://registry.npmjs.org/typescript failed, reason: getaddrinfo ENOTFOUND registry.npmjs.org",
+      "type": "system",
+      "errno": "ENOTFOUND",
+      "code": "ENOTFOUND"
+    },
+    "maxRetries": 2,
+    "method": "GET",
+    "timeout": 10000,
+    "url": "https://registry.npmjs.org/typescript"
+  },
+  "10 debug pnpm:request-retry": {
+    "attempt": 1,
+    "error": {
+      "message": "request to https://registry.npmjs.org/expo failed, reason: getaddrinfo ENOTFOUND registry.npmjs.org",
+      "type": "system",
+      "errno": "ENOTFOUND",
+      "code": "ENOTFOUND"
+    },
+    "maxRetries": 2,
+    "method": "GET",
+    "timeout": 10000,
+    "url": "https://registry.npmjs.org/expo"
+  },
+  "11 debug pnpm:request-retry": {
+    "attempt": 1,
+    "error": {
+      "message": "request to https://registry.npmjs.org/expo-status-bar failed, reason: getaddrinfo ENOTFOUND registry.npmjs.org",
+      "type": "system",
+      "errno": "ENOTFOUND",
+      "code": "ENOTFOUND"
+    },
+    "maxRetries": 2,
+    "method": "GET",
+    "timeout": 10000,
+    "url": "https://registry.npmjs.org/expo-status-bar"
+  },
+  "12 debug pnpm:request-retry": {
+    "attempt": 1,
+    "error": {
+      "message": "request to https://registry.npmjs.org/react-native failed, reason: getaddrinfo ENOTFOUND registry.npmjs.org",
+      "type": "system",
+      "errno": "ENOTFOUND",
+      "code": "ENOTFOUND"
+    },
+    "maxRetries": 2,
+    "method": "GET",
+    "timeout": 10000,
+    "url": "https://registry.npmjs.org/react-native"
+  },
+  "13 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/react/19.0.0",
+    "wanted": {
+      "dependentId": ".",
+      "name": "react",
+      "rawSpec": "19.0.0"
+    }
+  },
+  "14 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/react/19.0.0",
+    "requester": "/Users/rimildeyjsr/Documents/Codex/2026-06-06/i-want-to-build-a-book/mobile",
+    "status": "resolved"
+  },
+  "15 debug pnpm:request-retry": {
+    "attempt": 1,
+    "error": {
+      "message": "request to https://registry.npmjs.org/react/-/react-19.0.0.tgz failed, reason: getaddrinfo ENOTFOUND registry.npmjs.org",
+      "type": "system",
+      "errno": "ENOTFOUND",
+      "code": "ENOTFOUND",
+      "attempts": 1,
+      "resource": "https://registry.npmjs.org/react/-/react-19.0.0.tgz"
+    },
+    "maxRetries": 2,
+    "method": "GET",
+    "timeout": 10000,
+    "url": "https://registry.npmjs.org/react/-/react-19.0.0.tgz"
+  },
+  "16 debug pnpm:request-retry": {
+    "attempt": 2,
+    "error": {
+      "message": "request to https://registry.npmjs.org/@babel%2Fcore failed, reason: getaddrinfo ENOTFOUND registry.npmjs.org",
+      "type": "system",
+      "errno": "ENOTFOUND",
+      "code": "ENOTFOUND"
+    },
+    "maxRetries": 2,
+    "method": "GET",
+    "timeout": 60000,
+    "url": "https://registry.npmjs.org/@babel%2Fcore"
+  },
+  "17 debug pnpm:request-retry": {
+    "attempt": 2,
+    "error": {
+      "message": "request to https://registry.npmjs.org/@types%2Freact failed, reason: getaddrinfo ENOTFOUND registry.npmjs.org",
+      "type": "system",
+      "errno": "ENOTFOUND",
+      "code": "ENOTFOUND"
+    },
+    "maxRetries": 2,
+    "method": "GET",
+    "timeout": 60000,
+    "url": "https://registry.npmjs.org/@types%2Freact"
+  },
+  "18 debug pnpm:request-retry": {
+    "attempt": 2,
+    "error": {
+      "message": "request to https://registry.npmjs.org/typescript failed, reason: getaddrinfo ENOTFOUND registry.npmjs.org",
+      "type": "system",
+      "errno": "ENOTFOUND",
+      "code": "ENOTFOUND"
+    },
+    "maxRetries": 2,
+    "method": "GET",
+    "timeout": 60000,
+    "url": "https://registry.npmjs.org/typescript"
+  },
+  "19 debug pnpm:request-retry": {
+    "attempt": 2,
+    "error": {
+      "message": "request to https://registry.npmjs.org/expo failed, reason: getaddrinfo ENOTFOUND registry.npmjs.org",
+      "type": "system",
+      "errno": "ENOTFOUND",
+      "code": "ENOTFOUND"
+    },
+    "maxRetries": 2,
+    "method": "GET",
+    "timeout": 60000,
+    "url": "https://registry.npmjs.org/expo"
+  },
+  "20 debug pnpm:request-retry": {
+    "attempt": 2,
+    "error": {
+      "message": "request to https://registry.npmjs.org/expo-status-bar failed, reason: getaddrinfo ENOTFOUND registry.npmjs.org",
+      "type": "system",
+      "errno": "ENOTFOUND",
+      "code": "ENOTFOUND"
+    },
+    "maxRetries": 2,
+    "method": "GET",
+    "timeout": 60000,
+    "url": "https://registry.npmjs.org/expo-status-bar"
+  },
+  "21 debug pnpm:request-retry": {
+    "attempt": 2,
+    "error": {
+      "message": "request to https://registry.npmjs.org/react-native failed, reason: getaddrinfo ENOTFOUND registry.npmjs.org",
+      "type": "system",
+      "errno": "ENOTFOUND",
+      "code": "ENOTFOUND"
+    },
+    "maxRetries": 2,
+    "method": "GET",
+    "timeout": 60000,
+    "url": "https://registry.npmjs.org/react-native"
+  },
+  "22 debug pnpm:request-retry": {
+    "attempt": 2,
+    "error": {
+      "message": "request to https://registry.npmjs.org/react/-/react-19.0.0.tgz failed, reason: getaddrinfo ENOTFOUND registry.npmjs.org",
+      "type": "system",
+      "errno": "ENOTFOUND",
+      "code": "ENOTFOUND",
+      "attempts": 2,
+      "resource": "https://registry.npmjs.org/react/-/react-19.0.0.tgz"
+    },
+    "maxRetries": 2,
+    "method": "GET",
+    "timeout": 60000,
+    "url": "https://registry.npmjs.org/react/-/react-19.0.0.tgz"
+  },
+  "23 error pnpm": {
+    "code": "ERR_PNPM_META_FETCH_FAIL",
+    "attempts": 1,
+    "pkgsStack": [],
+    "err": {
+      "name": "Error",
+      "message": "GET https://registry.npmjs.org/expo: request to https://registry.npmjs.org/expo failed, reason: getaddrinfo ENOTFOUND registry.npmjs.org",
+      "code": "ERR_PNPM_META_FETCH_FAIL",
+      "stack": "Error: GET https://registry.npmjs.org/expo: request to https://registry.npmjs.org/expo failed, reason: getaddrinfo ENOTFOUND registry.npmjs.org\n    at RetryOperation._fn (/Users/rimildeyjsr/.node/corepack/pnpm/6.11.0/dist/pnpm.cjs:79596:18)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)"
+    }
+  }
+}

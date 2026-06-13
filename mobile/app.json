@@ -1,0 +1,13 @@
+{
+  "expo": {
+    "name": "Library Scanner",
+    "slug": "library-scanner",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
+
