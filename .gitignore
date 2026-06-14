@@ -12,3 +12,4 @@ uploads/
 backend/.coverage
 backend/htmlcov/
 
+.idea/

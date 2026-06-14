@@ -75,14 +75,24 @@ Build a small personal library app where a user scans or photographs book covers
 - Mobile app dependency tree was upgraded from Expo SDK 53 to Expo SDK 54 so it can run in the current iOS Expo Go app.
 - Mobile dependencies are installed at the new repo path.
 - Mobile capture now opens the real device camera through `expo-image-picker`, stores the captured image locally in app state, and carries that image through the existing mocked review/save flow.
-- Backend dependency installation is still incomplete because approval for `uv sync` was not granted.
+- Backend dependencies are installed in `backend/.venv` via `uv`.
+- Backend database configuration is now wired through `backend/.env` using `DATABASE_URL`.
+- SQLAlchemy engine/session plumbing exists in `backend/app/db/session.py` and `backend/app/db/dependencies.py`.
+- Alembic is configured and points at app settings for the database URL.
+- A first `Book` ORM model exists with UUID string IDs and the agreed MVP fields.
+- The initial books migration was generated and applied successfully.
+- Local PostgreSQL is running, the `book_library` database exists, and the `books` table was verified manually.
 
 ## Next Step
-Verify the mobile prototype on iPhone using Expo Go with the real capture -> mocked review -> save flow, then begin backend tutor mode with the first thin slice: database configuration.
+Start the first real book API slice:
+- define request/response schemas for books
+- implement `POST /books`
+- test book creation against the real model/session setup
+- then implement `GET /books`
 
 ## Open Questions
 - Will scans be processed synchronously in v1, or should we create a stubbed job state now?
-- Should `tags` stay denormalized for v1 as JSON/text array, then normalize later?
+- `tags` are deferred for now and intentionally excluded from the first `Book` model/API slice.
 - Do we want local image storage only for dev, with a storage abstraction from day one?
 
 ## Session Notes
@@ -91,3 +101,4 @@ Verify the mobile prototype on iPhone using Expo Go with the real capture -> moc
 - 2026-06-06: Pivoted to mobile-first implementation. Added a vibe-coded Expo-style mobile scaffold and explicit API contract documentation so backend work can follow the app flow.
 - 2026-06-13: Upgraded the mobile workspace from Expo SDK 53 to SDK 54 by aligning `expo`, `react`, `react-native`, `expo-status-bar`, `babel-preset-expo`, and React types with the SDK 54-compatible versions. This unblocks running the prototype on a physical iPhone with the current Expo Go release.
 - 2026-06-13: Added a minimal real camera slice in the Expo app using `expo-image-picker`. The app now opens the device camera, captures a photo, previews it on the capture screen, and saves the image URI with the mocked book record. OCR and backend upload are still mocked and intentionally deferred.
+- 2026-06-15: Completed the first backend persistence foundation slice in tutor mode. Added `database_url` config, backend `.env`, SQLAlchemy engine/session plumbing, Alembic setup, a first `Book` ORM model, and the initial `books` migration. Installed backend dependencies with `uv`, created the local `book_library` database using the local `rimildey` Postgres role, applied the migration, and verified that the `books` table exists.
