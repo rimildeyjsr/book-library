@@ -82,13 +82,14 @@ Build a small personal library app where a user scans or photographs book covers
 - A first `Book` ORM model exists with UUID string IDs and the agreed MVP fields.
 - The initial books migration was generated and applied successfully.
 - Local PostgreSQL is running, the `book_library` database exists, and the `books` table was verified manually.
+- `POST /books` is implemented with request/response schemas, service-layer write logic, and a real manual verification against the local API and Postgres database.
 
 ## Next Step
-Start the first real book API slice:
-- define request/response schemas for books
-- implement `POST /books`
-- test book creation against the real model/session setup
-- then implement `GET /books`
+Implement `GET /books`:
+- return saved books for the mobile library screen
+- decide default ordering for the list
+- verify response shape matches the frontend contract
+- then move to `GET /books/{id}`
 
 ## Open Questions
 - Will scans be processed synchronously in v1, or should we create a stubbed job state now?
@@ -102,3 +103,4 @@ Start the first real book API slice:
 - 2026-06-13: Upgraded the mobile workspace from Expo SDK 53 to SDK 54 by aligning `expo`, `react`, `react-native`, `expo-status-bar`, `babel-preset-expo`, and React types with the SDK 54-compatible versions. This unblocks running the prototype on a physical iPhone with the current Expo Go release.
 - 2026-06-13: Added a minimal real camera slice in the Expo app using `expo-image-picker`. The app now opens the device camera, captures a photo, previews it on the capture screen, and saves the image URI with the mocked book record. OCR and backend upload are still mocked and intentionally deferred.
 - 2026-06-15: Completed the first backend persistence foundation slice in tutor mode. Added `database_url` config, backend `.env`, SQLAlchemy engine/session plumbing, Alembic setup, a first `Book` ORM model, and the initial `books` migration. Installed backend dependencies with `uv`, created the local `book_library` database using the local `rimildey` Postgres role, applied the migration, and verified that the `books` table exists.
+- 2026-06-28: Completed the first real API slice for books. Added `CreateBookRequest` and `BookResponse` Pydantic schemas, a `create_book` service, and the `POST /books` route returning `201 Created`. Manually verified the endpoint end to end with `curl`, confirming validation, DB persistence, and camelCase API response fields.
