@@ -83,13 +83,15 @@ Build a small personal library app where a user scans or photographs book covers
 - The initial books migration was generated and applied successfully.
 - Local PostgreSQL is running, the `book_library` database exists, and the `books` table was verified manually.
 - `POST /books` is implemented with request/response schemas, service-layer write logic, and a real manual verification against the local API and Postgres database.
+- `GET /books` is implemented and returns saved books ordered newest first by `created_at`.
+- `GET /books/{book_id}` is implemented and returns `404` when a book is missing.
 
 ## Next Step
-Implement `GET /books`:
-- return saved books for the mobile library screen
-- decide default ordering for the list
-- verify response shape matches the frontend contract
-- then move to `GET /books/{id}`
+Implement `PATCH /books/{book_id}`:
+- define the partial-update request schema
+- decide which fields are editable in MVP
+- apply only provided changes
+- return the updated book
 
 ## Open Questions
 - Will scans be processed synchronously in v1, or should we create a stubbed job state now?
@@ -104,3 +106,4 @@ Implement `GET /books`:
 - 2026-06-13: Added a minimal real camera slice in the Expo app using `expo-image-picker`. The app now opens the device camera, captures a photo, previews it on the capture screen, and saves the image URI with the mocked book record. OCR and backend upload are still mocked and intentionally deferred.
 - 2026-06-15: Completed the first backend persistence foundation slice in tutor mode. Added `database_url` config, backend `.env`, SQLAlchemy engine/session plumbing, Alembic setup, a first `Book` ORM model, and the initial `books` migration. Installed backend dependencies with `uv`, created the local `book_library` database using the local `rimildey` Postgres role, applied the migration, and verified that the `books` table exists.
 - 2026-06-28: Completed the first real API slice for books. Added `CreateBookRequest` and `BookResponse` Pydantic schemas, a `create_book` service, and the `POST /books` route returning `201 Created`. Manually verified the endpoint end to end with `curl`, confirming validation, DB persistence, and camelCase API response fields.
+- 2026-06-28: Completed the first read API slices for books. Added `GET /books` with newest-first ordering and `GET /books/{book_id}` with explicit `404 Book not found` behavior. Both routes reuse the `BookResponse` schema and the thin route/service layering established for `POST /books`.

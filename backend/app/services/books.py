@@ -5,6 +5,10 @@ from app.models.book import Book
 from app.schemas.book import CreateBookRequest
 
 
+def get_book(session: Session, book_id: str) -> Book | None:
+    return session.get(Book, book_id)
+
+
 def list_books(session: Session) -> list[Book]:
     statement = select(Book).order_by(Book.created_at.desc())
     return list(session.scalars(statement))
