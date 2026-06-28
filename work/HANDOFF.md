@@ -85,13 +85,13 @@ Build a small personal library app where a user scans or photographs book covers
 - `POST /books` is implemented with request/response schemas, service-layer write logic, and a real manual verification against the local API and Postgres database.
 - `GET /books` is implemented and returns saved books ordered newest first by `created_at`.
 - `GET /books/{book_id}` is implemented and returns `404` when a book is missing.
+- `PATCH /books/{book_id}` is implemented with partial-update semantics, schema validation, `400` for empty patch bodies, and `404` for missing books.
 
 ## Next Step
-Implement `PATCH /books/{book_id}`:
-- define the partial-update request schema
-- decide which fields are editable in MVP
-- apply only provided changes
-- return the updated book
+Implement `DELETE /books/{book_id}`:
+- decide the response shape for successful deletion
+- return `404` for missing books
+- verify the row is actually removed from Postgres
 
 ## Open Questions
 - Will scans be processed synchronously in v1, or should we create a stubbed job state now?
@@ -107,3 +107,4 @@ Implement `PATCH /books/{book_id}`:
 - 2026-06-15: Completed the first backend persistence foundation slice in tutor mode. Added `database_url` config, backend `.env`, SQLAlchemy engine/session plumbing, Alembic setup, a first `Book` ORM model, and the initial `books` migration. Installed backend dependencies with `uv`, created the local `book_library` database using the local `rimildey` Postgres role, applied the migration, and verified that the `books` table exists.
 - 2026-06-28: Completed the first real API slice for books. Added `CreateBookRequest` and `BookResponse` Pydantic schemas, a `create_book` service, and the `POST /books` route returning `201 Created`. Manually verified the endpoint end to end with `curl`, confirming validation, DB persistence, and camelCase API response fields.
 - 2026-06-28: Completed the first read API slices for books. Added `GET /books` with newest-first ordering and `GET /books/{book_id}` with explicit `404 Book not found` behavior. Both routes reuse the `BookResponse` schema and the thin route/service layering established for `POST /books`.
+- 2026-06-28: Added `PATCH /books/{book_id}` with an `UpdateBookRequest` schema for partial updates. The route rejects empty patch bodies with `400`, returns `404` for missing books, and uses `payload.model_dump(exclude_unset=True)` so only explicitly provided fields are applied to the ORM object.

@@ -9,7 +9,7 @@
 6. `POST /books`
 7. `GET /books`
 8. `GET /books/{id}`
-9. `PATCH /books/{id}`
+9. `PATCH /books/{book_id}`
 10. `DELETE /books/{id}`
 11. `POST /scans`
 12. `GET /scans/{id}`

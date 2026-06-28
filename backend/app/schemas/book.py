@@ -46,3 +46,33 @@ class BookResponse(BaseModel):
     updated_at: datetime = Field(alias="updatedAt")
 
     model_config = ConfigDict(from_attributes=True, populate_by_name=True)
+
+
+class UpdateBookRequest(BaseModel):
+    title: str | None = None
+    author: str | None = None
+    genre: str | None = None
+    rating: int | None = Field(default=None, ge=1, le=5)
+    date_bought: date | None = Field(default=None, alias="dateBought")
+    date_read: date | None = Field(default=None, alias="dateRead")
+    notes: str | None = None
+
+    model_config = ConfigDict(populate_by_name=True)
+
+    @field_validator("title", "author", mode="before")
+    @classmethod
+    def validate_optional_required_text(cls, value: str | None) -> str | None:
+        if value is None:
+            return None
+        trimmed = value.strip()
+        if not trimmed:
+            raise ValueError("Field cannot be empty")
+        return trimmed
+
+    @field_validator("genre", "notes", mode="before")
+    @classmethod
+    def normalize_optional_patch_text(cls, value: str | None) -> str | None:
+        if value is None:
+            return None
+        trimmed = value.strip()
+        return trimmed or None
