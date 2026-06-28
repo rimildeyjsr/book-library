@@ -3,7 +3,7 @@ from sqlalchemy.orm import Session
 
 from app.db.dependencies import get_db_session
 from app.schemas import BookResponse, CreateBookRequest, UpdateBookRequest
-from app.services.books import create_book, get_book, list_books, update_book
+from app.services.books import create_book, delete_book, get_book, list_books, update_book
 
 router = APIRouter()
 
@@ -56,6 +56,19 @@ def update_book_route(
         raise HTTPException(status_code=400, detail="Request body must include at least one field")
 
     return update_book(session, book, payload)
+
+
+@router.delete(
+    "/books/{book_id}",
+    status_code=status.HTTP_204_NO_CONTENT,
+    tags=["books"],
+)
+def delete_book_route(book_id: str, session: Session = Depends(get_db_session)) -> None:
+    book = get_book(session, book_id)
+    if book is None:
+        raise HTTPException(status_code=404, detail="Book not found")
+
+    delete_book(session, book)
 
 
 @router.post(

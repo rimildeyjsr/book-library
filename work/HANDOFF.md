@@ -86,12 +86,14 @@ Build a small personal library app where a user scans or photographs book covers
 - `GET /books` is implemented and returns saved books ordered newest first by `created_at`.
 - `GET /books/{book_id}` is implemented and returns `404` when a book is missing.
 - `PATCH /books/{book_id}` is implemented with partial-update semantics, schema validation, `400` for empty patch bodies, and `404` for missing books.
+- `DELETE /books/{book_id}` is implemented and returns `204 No Content` on success plus `404` for missing books.
 
 ## Next Step
-Implement `DELETE /books/{book_id}`:
-- decide the response shape for successful deletion
-- return `404` for missing books
-- verify the row is actually removed from Postgres
+Start the scan side of the flow with `POST /scans`:
+- decide how local dev image storage should work behind a small abstraction
+- accept a multipart image upload
+- create a minimal scan record even before real OCR exists
+- return a draft-friendly response shape the mobile app can consume later
 
 ## Open Questions
 - Will scans be processed synchronously in v1, or should we create a stubbed job state now?
@@ -108,3 +110,4 @@ Implement `DELETE /books/{book_id}`:
 - 2026-06-28: Completed the first real API slice for books. Added `CreateBookRequest` and `BookResponse` Pydantic schemas, a `create_book` service, and the `POST /books` route returning `201 Created`. Manually verified the endpoint end to end with `curl`, confirming validation, DB persistence, and camelCase API response fields.
 - 2026-06-28: Completed the first read API slices for books. Added `GET /books` with newest-first ordering and `GET /books/{book_id}` with explicit `404 Book not found` behavior. Both routes reuse the `BookResponse` schema and the thin route/service layering established for `POST /books`.
 - 2026-06-28: Added `PATCH /books/{book_id}` with an `UpdateBookRequest` schema for partial updates. The route rejects empty patch bodies with `400`, returns `404` for missing books, and uses `payload.model_dump(exclude_unset=True)` so only explicitly provided fields are applied to the ORM object.
+- 2026-06-28: Added `DELETE /books/{book_id}` with `204 No Content` semantics. The delete route reuses the existing `get_book` lookup path, returns `404` for missing books, and commits the removal through a minimal delete service.

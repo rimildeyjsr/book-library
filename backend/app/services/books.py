@@ -25,6 +25,11 @@ def update_book(session: Session, book: Book, payload: UpdateBookRequest) -> Boo
     return book
 
 
+def delete_book(session: Session, book: Book) -> None:
+    session.delete(book)
+    session.commit()
+
+
 def create_book(session: Session, payload: CreateBookRequest) -> Book:
     book = Book(
         title=payload.title,

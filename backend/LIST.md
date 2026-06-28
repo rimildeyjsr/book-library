@@ -10,7 +10,7 @@
 7. `GET /books`
 8. `GET /books/{id}`
 9. `PATCH /books/{book_id}`
-10. `DELETE /books/{id}`
+10. `DELETE /books/{book_id}`
 11. `POST /scans`
 12. `GET /scans/{id}`
 13. Search and filters
